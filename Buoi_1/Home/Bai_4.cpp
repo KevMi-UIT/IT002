@@ -60,20 +60,18 @@ DANHSACH SortDanhSachNhanVien(const DANHSACH &);
 int main()
 {
     DANHSACH ds = CreateDanhSachNhanVien();
-
     // Cau a
     cout << "Tong luong cty phai tra: " << TinhTongThucLanh(ds) << endl;
-
+    cout << endl;
     // Cau b
     XuatNhungNhanVienLuongThapNhat(ds);
-
+    cout << endl;
     // Cau c
     cout << "So nhan vien thuong >= 12tr: " << DemSoLuongNhanVienThuongTren12tr(ds) << endl;
-
+    cout << endl;
     // Cau d
     cout << "In danh sach nhan vien tang dan:" << endl;
     XuatDanhSachNhanVien(SortDanhSachNhanVien(ds));
-
     return 0;
 }
 
