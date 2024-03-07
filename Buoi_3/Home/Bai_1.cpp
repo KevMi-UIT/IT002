@@ -22,6 +22,9 @@ private:
 
 int main()
 {
+    HocSinh hs;
+    hs.Nhap();
+    hs.Xuat();
     return 0;
 }
 
@@ -37,6 +40,13 @@ void HocSinh::Nhap()
     this->XetXepLoai();
 }
 
+void HocSinh::Xuat() const
+{
+    cout << "Hoc sinh: " << this->hoTen << endl;
+    cout << "Diem trung binh: " << this->diemTrungBinh << endl;
+    cout << "Xep loai: " << this->xepLoai << endl;
+}
+
 void HocSinh::TinhDiemTrungBinh()
 {
     this->diemTrungBinh = (this->diemToan + this->diemVan) / 2;
@@ -45,11 +55,19 @@ void HocSinh::TinhDiemTrungBinh()
 void HocSinh::XetXepLoai()
 {
     if (this->diemTrungBinh >= 8.5)
-    {
         this->xepLoai = "Gioi";
-    }
     else if (this->diemTrungBinh >= 8)
-    {
         this->xepLoai = "Kha gioi";
-    }
+    else if (this->diemTrungBinh >= 7)
+        this->xepLoai = "Kha";
+    else if (this->diemTrungBinh >= 6.5)
+        this->xepLoai = "Trung binh kha";
+    else if (this->diemTrungBinh >= 5.5)
+        this->xepLoai = "Trung binh";
+    else if (this->diemTrungBinh >= 5)
+        this->xepLoai = "Trung binh yeu";
+    else if (this->diemTrungBinh >= 4)
+        this->xepLoai = "Yeu";
+    else
+        this->xepLoai = "Kem";
 }
