@@ -38,44 +38,44 @@ int main()
 
 PhanSo::PhanSo()
 {
-    tu = 0;
-    mau = 1;
+    this->tu = 0;
+    this->mau = 1;
 }
 
 void PhanSo::NhapPhanSo()
 {
     cout << "Nhap tu: ";
-    cin >> tu;
+    cin >> this->tu;
     cout << "Nhap mau: ";
-    cin >> mau;
+    cin >> this->mau;
 }
 
 PhanSo::PhanSo(int initTu, int initMau)
 {
-    tu = initTu;
-    mau = initMau;
+    this->tu = initTu;
+    this->mau = initMau;
 }
 
 void PhanSo::Print() const
 {
-    cout << "\tTu: " << tu << endl;
-    cout << "\tMau: " << mau << endl;
+    cout << "\tTu: " << this->tu << endl;
+    cout << "\tMau: " << this->mau << endl;
 }
 
 int PhanSo::LayTu() const
 {
-    return tu;
+    return this->tu;
 }
 
 int PhanSo::LayMau() const
 {
-    return mau;
+    return this->mau;
 }
 
 PhanSo PhanSo::operator+(PhanSo &other) const
 {
-    PhanSo res;
-    res.tu = tu * other.mau + mau * other.tu;
-    res.mau = mau * other.mau;
+    PhanSo res = {0, 1};
+    res.tu = this->tu * other.mau + this->mau * other.tu;
+    res.mau = this->mau * other.mau;
     return res;
 }
