@@ -1,81 +1,55 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
-class PhanSo
+class HocSinh
 {
 private:
-    int tu;
-    int mau;
+    string hoTen;
+    float diemToan;
+    float diemVan;
+    float diemTrungBinh;
+    string xepLoai;
 
 public:
-    PhanSo();
-    PhanSo(int, int);
-    void NhapPhanSo();
-    void Print() const;
-    int LayTu() const;
-    int LayMau() const;
-    PhanSo operator+(PhanSo &) const;
+    void Nhap();
+    void Xuat() const;
+
+private:
+    void TinhDiemTrungBinh();
+    void XetXepLoai();
 };
 
 int main()
 {
-    // Nhap phan so
-    PhanSo ps1;
-    ps1.NhapPhanSo();
-    // Khoi tao phan so
-    PhanSo ps2(4, 5);
-    // Xuat phan so
-    ps2.Print();
-    // Lay gia tri phan so
-    cout << "Tu cua phan so 2: " << ps2.LayTu() << endl;
-    cout << "Mau cua phan so 2: " << ps2.LayMau() << endl;
-    // Tong 2 phan so
-    PhanSo tong;
-    tong = ps1 + ps2;
-    tong.Print();
     return 0;
 }
 
-PhanSo::PhanSo()
+void HocSinh::Nhap()
 {
-    this->tu = 0;
-    this->mau = 1;
+    cout << "Nhap ho ten sinh vien: ";
+    getline(cin, this->hoTen);
+    cout << "Nhap diem toan: ";
+    cin >> this->diemToan;
+    cout << "Nhap diem van: ";
+    cin >> this->diemVan;
+    this->TinhDiemTrungBinh();
+    this->XetXepLoai();
 }
 
-void PhanSo::NhapPhanSo()
+void HocSinh::TinhDiemTrungBinh()
 {
-    cout << "Nhap tu: ";
-    cin >> this->tu;
-    cout << "Nhap mau: ";
-    cin >> this->mau;
+    this->diemTrungBinh = (this->diemToan + this->diemVan) / 2;
 }
 
-PhanSo::PhanSo(int initTu, int initMau)
+void HocSinh::XetXepLoai()
 {
-    this->tu = initTu;
-    this->mau = initMau;
-}
-
-void PhanSo::Print() const
-{
-    cout << "\tTu: " << this->tu << endl;
-    cout << "\tMau: " << this->mau << endl;
-}
-
-int PhanSo::LayTu() const
-{
-    return this->tu;
-}
-
-int PhanSo::LayMau() const
-{
-    return this->mau;
-}
-
-PhanSo PhanSo::operator+(PhanSo &other) const
-{
-    PhanSo res = {0, 1};
-    res.tu = this->tu * other.mau + this->mau * other.tu;
-    res.mau = this->mau * other.mau;
-    return res;
+    if (this->diemTrungBinh >= 8.5)
+    {
+        this->xepLoai = "Gioi";
+    }
+    else if (this->diemTrungBinh >= 8)
+    {
+        this->xepLoai = "Kha gioi";
+    }
 }
