@@ -12,8 +12,6 @@ private:
 
 public:
     void Nhap();
-    float GetX();
-    float GetY();
 };
 
 class Circle
@@ -44,16 +42,6 @@ void Point::Nhap()
     cin >> this->x;
     cout << "\ty: ";
     cin >> this->y;
-}
-
-float Point::GetX()
-{
-    return this->x;
-}
-
-float Point::GetY()
-{
-    return this->y;
 }
 
 void Circle::Nhap()
