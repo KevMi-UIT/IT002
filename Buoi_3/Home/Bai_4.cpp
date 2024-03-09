@@ -6,7 +6,11 @@
 #include <cmath>
 #include <algorithm>
 #include <vector>
+#include <iomanip>
+#include <cstring>
 using namespace std;
+
+int MAX_WIDTH = to_string(MAX).length() + 3;
 
 class cArray
 {
@@ -75,7 +79,7 @@ cArray::cArray()
 void cArray::XuatMang()
 {
     for (auto it : this->v)
-        cout << it << " ";
+        cout << setw(MAX_WIDTH) << it;
     cout << endl;
 }
 
