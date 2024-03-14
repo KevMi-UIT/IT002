@@ -4,8 +4,8 @@ using namespace std;
 
 int main()
 {
-	Ngay x;
-	x.Nhap();
-	x.KeTiep().Xuat();
-	return 0;
+    Ngay x;
+    x.Nhap();
+    x.KeTiep().Xuat();
+    return 0;
 }
