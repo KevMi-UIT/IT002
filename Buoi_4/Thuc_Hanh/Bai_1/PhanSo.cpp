@@ -26,7 +26,6 @@ void PhanSo::Nhap()
 void PhanSo::Xuat()const
 {
     if (this->mau == 1) cout << "Phan so da rut gon: " << this->tu;
-    else if (this->mau == -1) cout << "Phan so da rut gon: -" << this->tu;
     else cout << "Phan so da rut gon: " << this->tu << "/" << this->mau;
 }
 
