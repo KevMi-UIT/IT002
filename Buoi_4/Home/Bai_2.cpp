@@ -1,26 +1,27 @@
 #define MAX 200
 #define MIN -200
 
+#include <algorithm>
+#include <cmath>
 #include <iostream>
 #include <random>
-#include <cmath>
-#include <algorithm>
 #include <vector>
 
 using namespace std;
 
 class PhanSo
 {
-private:
+  private:
     int tu;
     int mau;
-public:
+
+  public:
     PhanSo();
     ~PhanSo();
     PhanSo(int, int);
     void NhapPhanSo();
     void RutGon();
-    void XuatPhanSo()const;
+    void XuatPhanSo() const;
     void setTu(int);
     void setMau(int);
     int getTu();
@@ -30,50 +31,50 @@ public:
 
 class arrPhanSo
 {
-public:
+  public:
     void NhapMangPhanSo();
     void XuatMangPhanSo() const;
     void TaoMangNgauNhien();
-    PhanSo TimPhanSoMax()const;
+    PhanSo TimPhanSoMax() const;
     int DemTuSoNguyenTo();
     void SapXepTangDan();
-private:
+
+  private:
     int n;
-    vector <PhanSo> v;
+    vector<PhanSo> v;
 };
 
 int maxUoc(int, int);
 bool SoNguyenTo(int);
 bool Compare(PhanSo, PhanSo);
 
-
 int main()
 {
     arrPhanSo array1, array2;
 
-    //1. Nhập mảng phân số
+    // 1. Nhập mảng phân số
     array1.NhapMangPhanSo();
 
-    //2. Xuất danh sách các phân số
+    // 2. Xuất danh sách các phân số
     cout << "Danh sach cac phan so: " << endl;
     array1.XuatMangPhanSo();
 
-    //3. Tạo n phân số ngẫu nhiên
+    // 3. Tạo n phân số ngẫu nhiên
     array2.TaoMangNgauNhien();
     cout << "Danh sach cac phan so ngau nhien: " << endl;
     array2.XuatMangPhanSo();
 
-    //4. Tìm phân số có giá trị lớn nhất
+    // 4. Tìm phân số có giá trị lớn nhất
     cout << "Phan so lon nhat trong mang 1 la: ";
     array1.TimPhanSoMax().XuatPhanSo();
     cout << endl;
 
-    //5. Đếm số phân số có tử là số nguyên tố
+    // 5. Đếm số phân số có tử là số nguyên tố
     cout << "So luong phan so co tu la so nguyen to: ";
     cout << array1.DemTuSoNguyenTo();
     cout << endl;
 
-    //6. Sắp xếp các phân số trong mảng theo thứ tự tăng dần
+    // 6. Sắp xếp các phân số trong mảng theo thứ tự tăng dần
     array1.SapXepTangDan();
     cout << "Danh sach cac phan so sap xep tang dan trong mang 1: " << endl;
     array1.XuatMangPhanSo();
@@ -107,10 +108,12 @@ void PhanSo::NhapPhanSo()
     } while (this->mau == 0);
 }
 
-void PhanSo::XuatPhanSo()const
+void PhanSo::XuatPhanSo() const
 {
-    if (this->mau == 1) cout << this->tu;
-    else cout << this->tu << "/" << this->mau;
+    if (this->mau == 1)
+        cout << this->tu;
+    else
+        cout << this->tu << "/" << this->mau;
 }
 
 int maxUoc(int a, int b)
@@ -164,9 +167,11 @@ int PhanSo::getMau()
 
 bool SoNguyenTo(int a)
 {
-    if (a < 2) return false;
+    if (a < 2)
+        return false;
     for (int i = 2; i <= sqrt(a); i++)
-        if (a % i == 0) return false;
+        if (a % i == 0)
+            return false;
     return true;
 }
 
@@ -188,12 +193,13 @@ void arrPhanSo::NhapMangPhanSo()
     cout << endl;
 }
 
-void arrPhanSo::XuatMangPhanSo()const
+void arrPhanSo::XuatMangPhanSo() const
 {
     for (int i = 0; i < this->n; i++)
     {
         v[i].XuatPhanSo();
-        if (i == this->n - 1) cout << ".";
+        if (i == this->n - 1)
+            cout << ".";
         else
             cout << "; ";
     }
@@ -213,9 +219,9 @@ void arrPhanSo::TaoMangNgauNhien()
     }
 }
 
-PhanSo arrPhanSo::TimPhanSoMax()const
+PhanSo arrPhanSo::TimPhanSoMax() const
 {
-    PhanSo temp;
+    PhanSo temp = this->v[0];
     for (auto it : this->v)
     {
         if (float(it.getTu()) / it.getMau() > float(temp.getTu()) / temp.getMau())
