@@ -1,29 +1,30 @@
 #define MAX 200
 #define MIN -200
 
+#include <algorithm>
+#include <cmath>
+#include <cstring>
+#include <iomanip>
 #include <iostream>
 #include <random>
-#include <cmath>
-#include <algorithm>
+#include <string>
 #include <vector>
-#include <iomanip>
-#include <cstring>
 using namespace std;
 
 int MAX_WIDTH = to_string(MAX).length() + 3;
 
 class cArray
 {
-private:
+  private:
     int n;
     vector<int> v;
 
-public:
+  public:
     cArray();
     void NhapMang();
     void XuatMang() const;
     void TaoNgauNhien();
-    int DemLanXuatHienX(const int& x) const;
+    int DemLanXuatHienX(const int &x) const;
     bool KiemTraTangDan() const;
     int TimLeNhoNhat() const;
     void SapXepTangDan();
@@ -82,7 +83,9 @@ int main()
     return 0;
 }
 
-cArray::cArray() {}
+cArray::cArray()
+{
+}
 
 void cArray::NhapMang()
 {
@@ -110,7 +113,7 @@ void cArray::TaoNgauNhien()
         v[i] = rand() % (MAX - MIN) - MAX + 1;
 }
 
-int cArray::DemLanXuatHienX(const int& x) const
+int cArray::DemLanXuatHienX(const int &x) const
 {
     int count = 0;
     for (auto it : this->v)
