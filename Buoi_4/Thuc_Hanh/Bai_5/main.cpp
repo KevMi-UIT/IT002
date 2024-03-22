@@ -1,6 +1,4 @@
 #include "HocSinh.h"
-#include <cstring>
-#include <iostream>
 
 using namespace std;
 
