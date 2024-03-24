@@ -4,6 +4,8 @@
 
 using namespace std;
 
+HocSinh::HocSinh() : hoTen{""}, diemToan(0), diemVan(0), diemTrungBinh(0){};
+
 void HocSinh::Nhap()
 {
     cout << "Nhap ho ten sinh vien: ";

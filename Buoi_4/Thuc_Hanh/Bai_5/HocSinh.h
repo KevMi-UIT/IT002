@@ -5,16 +5,17 @@ using namespace std;
 
 class HocSinh
 {
-private:
+  private:
     string hoTen;
     float diemToan;
     float diemVan;
     float diemTrungBinh;
 
-public:
+  public:
+    HocSinh();
     void Nhap();
     void Xuat() const;
 
-private:
+  private:
     void TinhDiemTrungBinh();
 };
