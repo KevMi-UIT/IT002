@@ -1,5 +1,4 @@
 #include "ComplexNum.h"
-#include <iosfwd>
 #include <iostream>
 using namespace std;
 
@@ -55,7 +54,7 @@ ostream &operator<<(ostream &output, const ComplexNum &num)
     return output;
 }
 
-istream &operator>>(istream &input, const ComplexNum &num)
+istream &operator>>(istream &input, ComplexNum &num)
 {
     cout << "Nhap phan thuc: ";
     input >> num.real;
