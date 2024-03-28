@@ -1,4 +1,5 @@
 #include "PhanSo.h"
+#include <cmath>
 #include <iostream>
 using namespace std;
 
@@ -9,7 +10,8 @@ PhanSo::PhanSo()
 }
 
 PhanSo::~PhanSo()
-{}
+{
+}
 
 void PhanSo::Nhap()
 {
@@ -22,11 +24,12 @@ void PhanSo::Nhap()
     } while (this->mau == 0);
 }
 
-
-void PhanSo::Xuat()const
+void PhanSo::Xuat() const
 {
-    if (this->mau == 1) cout << "Phan so da rut gon: " << this->tu;
-    else cout << "Phan so da rut gon: " << this->tu << "/" << this->mau;
+    if (this->mau == 1)
+        cout << "Phan so da rut gon: " << this->tu;
+    else
+        cout << "Phan so da rut gon: " << this->tu << "/" << this->mau;
 }
 
 int maxUoc(int a, int b)

@@ -36,7 +36,7 @@ int Ngay::ktNhuan() const
 
 int Ngay::SoNgayToiDaTrongThang() const
 {
-    int ngaythang[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    int ngaythang[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     if (this->ktNhuan())
         ngaythang[1] = 29;
     return ngaythang[this->month - 1];
@@ -54,7 +54,7 @@ int Ngay::SoThuTuTrongNam() const
     int stt = 0;
     for (int i = 1; i < this->month; i++)
     {
-        Ngay temp = { 1, i, this->year };
+        Ngay temp = {1, i, this->year};
         stt += temp.SoNgayToiDaTrongThang();
     }
     return (stt + this->day);
@@ -65,15 +65,15 @@ int Ngay::SoThuTu() const
     int stt = 0;
     for (int i = 1; i < this->year; i++)
     {
-        Ngay temp = { 1, 1, i };
+        Ngay temp = {1, 1, i};
         stt += temp.SoNgayToiDaTrongNam();
     }
     return (stt + this->SoThuTuTrongNam());
 }
 
-Ngay Ngay::TimNgay(const int& nam, int& stt)
+Ngay Ngay::TimNgay(const int &nam, int &stt)
 {
-    Ngay temp = { 1, 1, nam };
+    Ngay temp = {1, 1, nam};
     temp.month = 1;
     while (stt > temp.SoNgayToiDaTrongThang())
     {
@@ -84,7 +84,7 @@ Ngay Ngay::TimNgay(const int& nam, int& stt)
     return temp;
 }
 
-Ngay Ngay::TimNgay(int& stt)
+Ngay Ngay::TimNgay(int &stt)
 {
     int nam = 1;
     int sn = 365;
@@ -92,7 +92,7 @@ Ngay Ngay::TimNgay(int& stt)
     {
         stt = stt - sn;
         nam++;
-        Ngay temp = { 1, 1, nam };
+        Ngay temp = {1, 1, nam};
         sn = temp.SoNgayToiDaTrongNam();
     }
     return TimNgay(nam, stt);

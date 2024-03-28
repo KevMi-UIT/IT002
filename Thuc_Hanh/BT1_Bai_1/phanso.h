@@ -1,15 +1,14 @@
 #pragma once
 class PhanSo
 {
-public:
+  public:
     PhanSo();
     ~PhanSo();
     void Nhap();
     void Rutgon();
-    void Xuat()const;
+    void Xuat() const;
 
-private:
+  private:
     int tu;
     int mau;
 };
-

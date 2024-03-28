@@ -1,10 +1,11 @@
 #pragma once
 class PhanSo
 {
-private:
+  private:
     int tu;
     int mau;
-public:
+
+  public:
     PhanSo();
     ~PhanSo();
     void Nhap();
@@ -12,6 +13,5 @@ public:
     double getMau() const;
     void Giatri(double, double, double, double);
     void Xuat() const;
-    static void Max(PhanSo&, PhanSo&, PhanSo&);
+    static void Max(PhanSo &, PhanSo &, PhanSo &);
 };
-

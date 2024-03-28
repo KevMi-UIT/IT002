@@ -8,7 +8,8 @@ PhanSo::PhanSo()
 }
 
 PhanSo::~PhanSo()
-{}
+{
+}
 void PhanSo::Nhap()
 {
     do
@@ -35,7 +36,7 @@ void PhanSo::Giatri(double t1, double t2, double m1, double m2)
 {
     tu = t1 * m2 - t2 * m1;
 }
-void PhanSo::Max(PhanSo& ps1, PhanSo& ps2, PhanSo& ps3)
+void PhanSo::Max(PhanSo &ps1, PhanSo &ps2, PhanSo &ps3)
 {
     ps3.Giatri(ps1.getTu(), ps2.getTu(), ps1.getMau(), ps2.getMau());
 }

@@ -1,4 +1,5 @@
 #include "phanso.h"
+#include <cmath>
 #include <iostream>
 using namespace std;
 
@@ -65,7 +66,6 @@ PhanSo PhanSo::Rutgon()
     }
     return res;
 }
-
 
 PhanSo PhanSo::operator+(PhanSo &b) const
 {
