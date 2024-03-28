@@ -15,16 +15,16 @@ int MAX_WIDTH = to_string(MAX).length() + 3;
 
 class cArray
 {
-  private:
+private:
     int n;
     vector<int> v;
 
-  public:
+public:
     cArray();
     void NhapMang();
     void XuatMang() const;
     void TaoNgauNhien();
-    int DemLanXuatHienX(const int &x) const;
+    int DemLanXuatHienX(const int& x) const;
     bool KiemTraTangDan() const;
     int TimLeNhoNhat() const;
     void SapXepTangDan();
@@ -113,7 +113,7 @@ void cArray::TaoNgauNhien()
         v[i] = rand() % (MAX - MIN) - MAX + 1;
 }
 
-int cArray::DemLanXuatHienX(const int &x) const
+int cArray::DemLanXuatHienX(const int& x) const
 {
     int count = 0;
     for (auto it : this->v)

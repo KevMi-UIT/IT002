@@ -11,11 +11,11 @@ using namespace std;
 
 class PhanSo
 {
-  private:
+private:
     int tu;
     int mau;
 
-  public:
+public:
     PhanSo();
     ~PhanSo();
     PhanSo(int, int);
@@ -31,7 +31,7 @@ class PhanSo
 
 class arrPhanSo
 {
-  public:
+public:
     void NhapMangPhanSo();
     void XuatMangPhanSo() const;
     void TaoMangNgauNhien();
@@ -39,7 +39,7 @@ class arrPhanSo
     int DemTuSoNguyenTo();
     void SapXepTangDan();
 
-  private:
+private:
     int n;
     vector<PhanSo> v;
 };

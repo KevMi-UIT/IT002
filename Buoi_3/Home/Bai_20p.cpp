@@ -8,13 +8,13 @@ private:
     int mau;
 
 public:
-    PhanSo();
-    PhanSo(int, int);
+    //PhanSo();
+    //PhanSo(int, int); // constructor
     void NhapPhanSo();
     void Print() const;
     int LayTu() const;
     int LayMau() const;
-    PhanSo operator+(PhanSo &) const;
+    PhanSo operator+(PhanSo&) const;
 };
 
 int main()
@@ -72,9 +72,9 @@ int PhanSo::LayMau() const
     return this->mau;
 }
 
-PhanSo PhanSo::operator+(PhanSo &other) const
+PhanSo PhanSo::operator+(PhanSo& other) const
 {
-    PhanSo res = {0, 1};
+    PhanSo res = { 0, 1 };
     res.tu = this->tu * other.mau + this->mau * other.tu;
     res.mau = this->mau * other.mau;
     return res;
