@@ -43,11 +43,6 @@ ComplexNum ComplexNum::operator/(const ComplexNum &other) const
     return ComplexNum(real, imagine);
 }
 
-bool ComplexNum::operator==(const ComplexNum &other) const
-{
-    return ((this->real == other.real) && (this->imagine == other.imagine));
-}
-
 ostream &operator<<(ostream &output, const ComplexNum &num)
 {
     output << num.real << " + " << num.imagine << "i";

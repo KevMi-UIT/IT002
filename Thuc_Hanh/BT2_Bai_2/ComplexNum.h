@@ -16,7 +16,6 @@ class ComplexNum
     ComplexNum operator-(const ComplexNum &) const;
     ComplexNum operator*(const ComplexNum &) const;
     ComplexNum operator/(const ComplexNum &) const;
-    bool operator==(const ComplexNum &) const;
     friend ostream &operator<<(ostream &output, const ComplexNum &);
     friend istream &operator>>(istream &input, ComplexNum &);
 };
