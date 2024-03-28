@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{380e78df-0c78-40c0-9868-bfaf7e33f3cb}</ProjectGuid>
-    <RootNamespace>BT1Bai5</RootNamespace>
+    <ProjectGuid>{1e7451a8-2428-4823-8586-ec4b54a8fe08}</ProjectGuid>
+    <RootNamespace>BT2Bai2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,11 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="HocSinh.cpp" />
+    <ClCompile Include="ComplexNum.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HocSinh.h" />
+    <ClInclude Include="ComplexNum.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
