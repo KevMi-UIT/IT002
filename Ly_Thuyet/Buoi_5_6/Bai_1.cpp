@@ -16,13 +16,27 @@ class ComplexNum
     ComplexNum operator*(const ComplexNum &) const;
     ComplexNum operator/(const ComplexNum &) const;
     bool operator==(const ComplexNum &) const;
-    ComplexNum operator<<(const ComplexNum &) const;
-    ComplexNum operator>>(const ComplexNum &) const;
+    friend ostream &operator<<(ostream &output, const ComplexNum &);
+    friend istream &operator>>(istream &input, ComplexNum &);
 };
 
 int main()
 {
-
+    ComplexNum num1, num2;
+    cout << "Nhap so phuc 1: " << endl;
+    cin >> num1;
+    cout << "Nhap so phuc 2: " << endl;
+    cin >> num2;
+    cout << "So phuc 1: " << num1 << endl;
+    cout << "So phuc 2: " << num2 << endl;
+    cout << "So phuc 1 + So phuc 2: " << num1 + num2 << endl;
+    cout << "So phuc 1 - So phuc 2: " << num1 - num2 << endl;
+    cout << "So phuc 1 * So phuc 2: " << num1 * num2 << endl;
+    cout << "So phuc 1 / So phuc 2: " << num1 / num2 << endl;
+    if (num1 == num2)
+        cout << "so phuc 1 == so phuc 2 == " << num1 << endl;
+    else
+        cout << "so phuc 1 = " << num1 << " != " << "so phuc 2 = " << num2 << endl;
     return 0;
 }
 
@@ -72,9 +86,17 @@ bool ComplexNum::operator==(const ComplexNum &other) const
     return ((this->real == other.real) && (this->imagine == other.imagine));
 }
 
-/* ComplexNum ComplexNum::operator<<(const ComplexNum &other) const */
-/* { */
-/* } */
-/* ComplexNum ComplexNum::operator>>(const ComplexNum &other) const */
-/* { */
-/* } */
+ostream &operator<<(ostream &output, const ComplexNum &num)
+{
+    output << num.real << " + " << num.imagine << "i";
+    return output;
+}
+
+istream &operator>>(istream &input, ComplexNum &num)
+{
+    cout << "Nhap phan thuc: ";
+    input >> num.real;
+    cout << "Nhap phan ao: ";
+    input >> num.imagine;
+    return input;
+}
