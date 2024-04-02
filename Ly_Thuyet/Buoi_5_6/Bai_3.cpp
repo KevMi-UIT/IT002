@@ -96,6 +96,5 @@ Dathuc Dathuc::operator+(const Dathuc &other)
         int term2 = (i <= other.somu) ? other.a[i] : 0;
         result.a[i] = term1 + term2;
     }
-
     return result;
 }
