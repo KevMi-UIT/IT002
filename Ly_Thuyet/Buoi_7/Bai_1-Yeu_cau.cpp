@@ -7,6 +7,9 @@ using namespace std;
 
 class CanBoVienChuc
 {
+    friend class GiangVien;
+    friend class NhanVienHanhChinh;
+
   protected:
     string maCanBo;
     string hoTen;
@@ -36,6 +39,7 @@ class GiangVien : public CanBoVienChuc
     {
         setLuong();
     }
+    GiangVien(const CanBoVienChuc &);
     void setLuong();
     friend istream &operator>>(istream &, GiangVien &);
     friend ostream &operator<<(ostream &, const GiangVien &);
@@ -57,6 +61,7 @@ class NhanVienHanhChinh : public CanBoVienChuc
     {
         setLuong();
     }
+    NhanVienHanhChinh(const CanBoVienChuc &);
     void setLuong();
     friend istream &operator>>(istream &, NhanVienHanhChinh &);
     friend ostream &operator<<(ostream &, const NhanVienHanhChinh &);
@@ -100,6 +105,7 @@ void NhanVienHanhChinh::setLuong()
 
 istream &operator>>(istream &is, CanBoVienChuc &canBoVienChuc)
 {
+    cin.ignore();
     cout << "Nhap ma can bo: ";
     getline(is, canBoVienChuc.maCanBo);
     cout << "Nhap ho ten: ";
@@ -123,9 +129,19 @@ ostream &operator<<(ostream &os, const CanBoVienChuc &canBoVienChuc)
     return os;
 }
 
+GiangVien::GiangVien(const CanBoVienChuc &canBoVienChuc)
+{
+    this->maCanBo = canBoVienChuc.maCanBo;
+    this->hoTen = canBoVienChuc.hoTen;
+    this->gioiTinh = canBoVienChuc.gioiTinh;
+    this->luong = canBoVienChuc.luong;
+}
+
 istream &operator>>(istream &is, GiangVien &giangVien)
 {
-    CanBoVienChuc::operator>>(is, giangVien);
+    CanBoVienChuc canBoVienChuc;
+    cin >> canBoVienChuc;
+    giangVien = GiangVien(canBoVienChuc);
     cout << "Nhap so gio day: ";
     is >> giangVien.soGioDay;
     cout << "Nhap so gio nghien cuu: ";
@@ -138,7 +154,7 @@ istream &operator>>(istream &is, GiangVien &giangVien)
 
 ostream &operator<<(ostream &os, const GiangVien &giangVien)
 {
-    cout << giangVien;
+    cout << CanBoVienChuc(giangVien);
     os << "So gio day: " << giangVien.soGioDay << "\n";
     os << "So gio nghien cuu: " << giangVien.soGioNghienCuu << "\n";
     os << "Don gia: " << giangVien.donGia << "\n";
@@ -146,9 +162,19 @@ ostream &operator<<(ostream &os, const GiangVien &giangVien)
     return os;
 }
 
+NhanVienHanhChinh::NhanVienHanhChinh(const CanBoVienChuc &canBoVienChuc)
+{
+    this->maCanBo = canBoVienChuc.maCanBo;
+    this->hoTen = canBoVienChuc.hoTen;
+    this->gioiTinh = canBoVienChuc.gioiTinh;
+    this->luong = canBoVienChuc.luong;
+}
+
 istream &operator>>(istream &is, NhanVienHanhChinh &nhanVienHanhChinh)
 {
-    cin >> nhanVienHanhChinh;
+    CanBoVienChuc canBoVienChuc;
+    cin >> canBoVienChuc;
+    nhanVienHanhChinh = NhanVienHanhChinh(canBoVienChuc);
     cout << "Nhap so ngay lam viec: ";
     is >> nhanVienHanhChinh.soNgayLamViec;
     cout << "Nhap so gio lam them: ";
@@ -157,11 +183,13 @@ istream &operator>>(istream &is, NhanVienHanhChinh &nhanVienHanhChinh)
     is >> nhanVienHanhChinh.tienCongMotNgay;
     cout << "Nhap don gia: ";
     is >> nhanVienHanhChinh.donGia;
+    nhanVienHanhChinh.setLuong();
     return is;
 }
+
 ostream &operator<<(ostream &os, const NhanVienHanhChinh &nhanVienHanhChinh)
 {
-    cout << nhanVienHanhChinh;
+    cout << CanBoVienChuc(nhanVienHanhChinh);
     os << "So ngay lam viec: " << nhanVienHanhChinh.soNgayLamViec << "\n";
     os << "So gio lam them: " << nhanVienHanhChinh.soGioLamThem << "\n";
     os << "Tien cong mot ngay: " << nhanVienHanhChinh.tienCongMotNgay << "\n";
