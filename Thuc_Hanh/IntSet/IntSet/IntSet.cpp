@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-IntSet::IntSet(const int inValues[] = NULL, const int &inCount = 0)
+IntSet::IntSet(const int inValues[], const int &inCount)
 {
     int *newList = new int[inCount];
     int count = inCount;

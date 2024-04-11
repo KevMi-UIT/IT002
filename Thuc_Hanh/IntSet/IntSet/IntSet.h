@@ -8,10 +8,7 @@ class IntSet
     int count;
 
   public:
-    IntSet() : values(NULL), count(0)
-    {
-    }
-    IntSet(const int[], const int &);
+    IntSet(const int inValues[] = NULL, const int &inCount = 0);
     ~IntSet();
     friend istream &operator>>(istream &, IntSet &);
     friend ostream &operator<<(ostream &, const IntSet &);
