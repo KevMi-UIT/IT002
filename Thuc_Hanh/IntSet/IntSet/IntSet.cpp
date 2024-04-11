@@ -36,11 +36,13 @@ istream &operator>>(istream &is, IntSet &intSet)
         cout << "Nhap phan tu thu " << i + 1 << ": ";
         is >> list[i];
     }
-
     IntSet::DedupList(list, intSet.count);
-    IntSet newIntSet = IntSet(list, intSet.count);
+    if (intSet.values != NULL)
+        delete[] intSet.values;
+    intSet.values = new int[intSet.count];
+    for (int i = 0; i < intSet.count; i++)
+        intSet.values[i] = list[i];
     delete[] list;
-    intSet = newIntSet;
     return is;
 }
 

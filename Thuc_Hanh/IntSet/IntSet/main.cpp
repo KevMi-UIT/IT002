@@ -11,7 +11,10 @@ int main()
     IntSet s1, s2(list, 3), s3;
     cout << "Xuat s2:" << endl;
     cout << s2;
-    cin >> s1 >> s2;
+    cout << "Nhap set 1:" << endl;
+    cin >> s1;
+    cout << "Nhap set 2:" << endl;
+    cin >> s2;
     s3 = s1 + s2; // Union
     cout << "Xuat s3 = s1 + s2:" << endl;
     cout << s3;
