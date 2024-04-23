@@ -15,6 +15,10 @@ int main()
     cin >> s1;
     cout << "Nhap set 2:" << endl;
     cin >> s2;
+    cout << "Xuat set 1:" << endl;
+    cout << s1;
+    cout << "Xuat set 2:" << endl;
+    cout << s2;
     s3 = s1 + s2; // Union
     cout << "Xuat s3 = s1 + s2:" << endl;
     cout << s3;

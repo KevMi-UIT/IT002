@@ -69,7 +69,6 @@ IntSet IntSet::operator+(const IntSet &other) const
                 continue;
         this->AddElement(newList, count++, other.values[i]);
     }
-    // Check khai bao dong
     IntSet newIntSet = IntSet(newList, count);
     delete[] newList;
     return newIntSet;
@@ -82,7 +81,7 @@ IntSet IntSet::operator-(const IntSet &other) const
     for (int i = 0; i < this->count; i++)
         newList[i] = this->values[i];
     for (int i = 0; i < other.count; i++)
-        for (int j = 0; i < count; j++)
+        for (int j = 0; j < count; j++)
             if (newList[j] == other.values[i])
             {
                 this->RemoveElement(newList, count, j);
@@ -95,7 +94,9 @@ IntSet IntSet::operator-(const IntSet &other) const
 
 int IntSet::operator[](const int &pos) const
 {
-    return this->values[pos];
+    if ((0 <= pos and pos < this->count))
+        return this->values[pos];
+    return -1; // return -1 if the position is not valid
 }
 
 bool IntSet::operator==(const IntSet &other) const
