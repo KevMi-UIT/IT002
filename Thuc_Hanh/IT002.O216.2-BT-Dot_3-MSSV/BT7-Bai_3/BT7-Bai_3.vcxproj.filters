@@ -14,4 +14,53 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Nguoi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SinhVien.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HocSinh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CongNhan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CaSi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NgheSi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DanhSach.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Nguoi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SinhVien.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HocSinh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CongNhan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CaSi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NgheSi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DanhSach.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
