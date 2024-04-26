@@ -1,12 +1,25 @@
 #pragma once
 #include <iostream>
-using namespace std;
 class CDate
 {
   private:
-    int Ngay;
-    int Thang;
-    int Nam;
+    int ngay, thang, nam;
 
   public:
+    CDate()
+    {
+        ngay = 0;
+        thang = 0;
+        nam = 0;
+    };
+    ~CDate(){};
+    bool isLeap();
+    bool isValid();
+    void Nhap();
+    void Xuat() const;
+    CDate Cong(int) const;
+    CDate Tru(int) const;
+    CDate Them1ngay() const;
+    CDate Bot1ngay() const;
+    long KhoangCach(CDate &) const;
 };
