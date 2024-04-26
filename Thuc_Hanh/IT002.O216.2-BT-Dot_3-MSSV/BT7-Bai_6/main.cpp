@@ -26,13 +26,13 @@ int main()
         switch (sel)
         {
         case 1:
-            ds.push_back(new Bo);
+            ds.push_back(new Bo());
             break;
         case 2:
-            ds.push_back(new Cuu);
+            ds.push_back(new Cuu());
             break;
         case 3:
-            ds.push_back(new De);
+            ds.push_back(new De());
             break;
         default:
             cout << "Gia suc khong hop le!" << endl;
@@ -52,13 +52,13 @@ int main()
         string currentType = ds[i]->getLoai();
         if (currentType == "Bo")
             for (int j = 0; j < ds[i]->getSoCon(); j++)
-                ds.push_back(new Bo);
+                ds.push_back(new Bo());
         else if (currentType == "Cuu")
             for (int j = 0; j < ds[i]->getSoCon(); j++)
-                ds.push_back(new Cuu);
+                ds.push_back(new Cuu());
         else if (currentType == "De")
             for (int j = 0; j < ds[i]->getSoCon(); j++)
-                ds.push_back(new De);
+                ds.push_back(new De());
     }
 
     unordered_map<string, int> dsSauCung;

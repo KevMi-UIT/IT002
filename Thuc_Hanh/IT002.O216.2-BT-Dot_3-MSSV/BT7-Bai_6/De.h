@@ -15,5 +15,5 @@ class De : public GiaSuc
     {
     }
     ~De() = default;
-    void keu() const;
+    void keu() const override;
 };
