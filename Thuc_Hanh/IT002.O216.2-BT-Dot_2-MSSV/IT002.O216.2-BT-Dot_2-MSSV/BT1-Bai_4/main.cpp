@@ -13,4 +13,5 @@ int main()
     cout << c << endl;
     d = a - b;
     cout << d << endl;
+    return 0;
 }
