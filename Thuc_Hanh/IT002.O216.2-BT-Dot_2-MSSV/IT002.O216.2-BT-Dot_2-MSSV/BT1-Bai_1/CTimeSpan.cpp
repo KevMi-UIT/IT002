@@ -1,69 +1,62 @@
 #include "CTimeSpan.h"
 #include <iostream>
+
 using namespace std;
 
-void CTimeSpan::Nhap()
+istream &operator>>(istream &is, CTimeSpan &time)
 {
     cout << "Nhap so giay: ";
-    cin >> this->length;
+    is >> time.length;
+    return is;
 }
 
-void CTimeSpan::Xuat() const
+ostream &operator<<(ostream &os, const CTimeSpan &time)
 {
-    cout << "Gia tri: " << this->length;
+    os << time.length;
+    return os;
 }
 
-double CTimeSpan::getLength() const
+long CTimeSpan::getLength() const
 {
     return this->length;
 }
 
-CTimeSpan CTimeSpan::Cong(const CTimeSpan &other) const
+CTimeSpan CTimeSpan::operator+(const CTimeSpan &other) const
 {
     return CTimeSpan(this->length + other.length);
 }
 
-CTimeSpan CTimeSpan::Tru(const CTimeSpan &other) const
+CTimeSpan CTimeSpan::operator-(const CTimeSpan &other) const
 {
     return CTimeSpan(this->length - other.length);
 }
 
-CTimeSpan CTimeSpan::Nhan(const CTimeSpan &other) const
-{
-    return CTimeSpan(this->length * other.length);
-}
-
-CTimeSpan CTimeSpan::Chia(const CTimeSpan &other) const
-{
-    return CTimeSpan(this->length / other.length);
-}
-
-bool CTimeSpan::Bang(const CTimeSpan &other) const
+bool CTimeSpan::operator==(const CTimeSpan &other) const
 {
     return this->length == other.length;
 }
 
-bool CTimeSpan::Khac(const CTimeSpan &other) const
+bool CTimeSpan::operator!=(const CTimeSpan &other) const
 {
     return this->length != other.length;
 }
 
-bool CTimeSpan::LonHon(const CTimeSpan &other) const
+bool CTimeSpan::operator>(const CTimeSpan &other) const
 {
     return this->length > other.length;
 }
 
-bool CTimeSpan::LonHonBang(const CTimeSpan &other) const
+bool CTimeSpan::operator>=(const CTimeSpan &other) const
 {
     return this->length >= other.length;
 }
 
-bool CTimeSpan::BeHon(const CTimeSpan &other) const
+bool CTimeSpan::operator<(const CTimeSpan &other) const
 {
     return this->length < other.length;
 }
 
-bool CTimeSpan::BeHonBang(const CTimeSpan &other) const
+bool CTimeSpan::operator<=(const CTimeSpan &other) const
 {
     return this->length <= other.length;
 }

@@ -1,24 +1,26 @@
 #pragma once
+#include <iostream>
+
+using namespace std;
+
 class CTimeSpan
 {
   private:
-    double length;
+    long length;
 
   public:
-    CTimeSpan(const double &inLength = 0) : length(inLength)
+    CTimeSpan(const long &_Length = 0) : length(_Length)
     {
     }
-    void Nhap();
-    void Xuat() const;
-    double getLength() const;
-    CTimeSpan Cong(const CTimeSpan &) const;
-    CTimeSpan Tru(const CTimeSpan &) const;
-    CTimeSpan Nhan(const CTimeSpan &) const;
-    CTimeSpan Chia(const CTimeSpan &) const;
-    bool Bang(const CTimeSpan &) const;
-    bool Khac(const CTimeSpan &) const;
-    bool LonHon(const CTimeSpan &) const;
-    bool LonHonBang(const CTimeSpan &) const;
-    bool BeHon(const CTimeSpan &) const;
-    bool BeHonBang(const CTimeSpan &) const;
+    friend istream &operator>>(istream &, CTimeSpan &);
+    friend ostream &operator<<(ostream &, const CTimeSpan &);
+    long getLength() const;
+    CTimeSpan operator+(const CTimeSpan &) const;
+    CTimeSpan operator-(const CTimeSpan &) const;
+    bool operator==(const CTimeSpan &) const;
+    bool operator!=(const CTimeSpan &) const;
+    bool operator>(const CTimeSpan &) const;
+    bool operator>=(const CTimeSpan &) const;
+    bool operator<(const CTimeSpan &) const;
+    bool operator<=(const CTimeSpan &) const;
 };
