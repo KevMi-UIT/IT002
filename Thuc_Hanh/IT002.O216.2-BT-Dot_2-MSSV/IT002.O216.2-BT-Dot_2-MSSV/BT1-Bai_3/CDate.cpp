@@ -181,8 +181,6 @@ CDate CDate::Bot1ngay() const
 }
 long CDate::KhoangCach(CDate &other) const
 {
-    //     2/2/2012 - 2/4/2024
-    //     0/2/12
     long days_1 = 0;
     long days_2 = 0;
     for (int i = 1; i < this->nam; i++)

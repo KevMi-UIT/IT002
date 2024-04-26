@@ -9,11 +9,9 @@ int main()
 
     cout << "Nhap ngay thu 1: " << endl;
     day1.Nhap();
-
-    cout << "Xuat ngay thu 1: " << endl;
     day1.Xuat();
 
-    /*cout << "Ngay tiep theo cua ngay thu 1: ";
+    cout << "Ngay tiep theo cua ngay thu 1: ";
     day1.Them1ngay().Xuat();
 
     cout << "Ngay truoc do cua ngay thu 1: ";
@@ -29,7 +27,7 @@ int main()
     cin >> y;
 
     cout << "Ngay thu 1 sau khi tru di: ";
-    day1.Tru(y).Xuat();*/
+    day1.Tru(y).Xuat();
 
     cout << "Nhap ngay thu 2: " << endl;
     day2.Nhap();
@@ -37,7 +35,5 @@ int main()
 
     cout << "Khoang cach giua 2 ngay: ";
     cout << day1.KhoangCach(day2) << " ngay" << endl;
-    x = day1.KhoangCach(day2);
-    day1.Cong(int(x)).Xuat();
     return 0;
 }
