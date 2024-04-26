@@ -42,7 +42,7 @@ ostream &operator<<(ostream &os, const Diem &d)
     return os;
 }
 
-float Diem::tinhKhoangCach(Diem d)
+float Diem::tinhKhoangCach(const Diem &d1, const Diem &d2)
 {
-    return sqrt(pow(this->x - d.x, 2) + pow(this->y - d.y, 2));
+    return sqrt(pow(d1.x - d2.x, 2) + pow(d1.y - d2.y, 2));
 }

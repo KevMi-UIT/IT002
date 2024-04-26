@@ -24,12 +24,36 @@
     <ClCompile Include="Diem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HinhThang.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HinhChuNhat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HinhBinhHanh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HinhVuong.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HinhHoc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Diem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HinhThang.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HinhChuNhat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HinhBinhHanh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HinhVuong.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

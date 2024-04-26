@@ -19,8 +19,6 @@ class Diem
     float getY() const;
     friend istream &operator>>(istream &, Diem &);
     friend ostream &operator<<(ostream &, const Diem &);
-    float tinhKhoangCach(Diem);
-    ~Diem()
-    {
-    }
+    static float tinhKhoangCach(const Diem &, const Diem &);
+    ~Diem() = default;
 };
