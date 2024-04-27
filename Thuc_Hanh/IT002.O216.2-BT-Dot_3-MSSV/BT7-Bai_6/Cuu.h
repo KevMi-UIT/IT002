@@ -8,10 +8,10 @@
 class Cuu : public GiaSuc
 {
   private:
-    string loai = "Cuu";
+    string loai;
 
   public:
-    Cuu() : GiaSuc(0, MAX_SUA_CUU)
+    Cuu() : GiaSuc(0, MAX_SUA_CUU, "Cuu")
     {
     }
     ~Cuu() = default;

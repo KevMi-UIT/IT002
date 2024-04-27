@@ -13,7 +13,7 @@ class GiaSuc
     string loai;
 
   public:
-    GiaSuc(const int &inSoCon = 0, const int &inSoSua = 0);
+    GiaSuc(const int &inSoCon = 0, const int &inSoSua = 0, const string & = "");
     virtual ~GiaSuc() = default;
     void Xuat() const;
     virtual void keu() const = 0;

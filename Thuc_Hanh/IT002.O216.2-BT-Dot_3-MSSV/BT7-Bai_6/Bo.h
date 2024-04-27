@@ -8,10 +8,10 @@
 class Bo : public GiaSuc
 {
   private:
-    string loai = "Bo";
+    string loai;
 
   public:
-    Bo() : GiaSuc(0, MAX_SUA_BO)
+    Bo() : GiaSuc(0, MAX_SUA_BO, "Bo")
     {
     }
     ~Bo() = default;

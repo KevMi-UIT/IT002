@@ -3,10 +3,11 @@
 #include <random>
 using namespace std;
 
-GiaSuc::GiaSuc(const int &_SoCon, const int &_MaxSoSua)
+GiaSuc::GiaSuc(const int &_SoCon, const int &_MaxSoSua, const string &_loai)
 {
     this->soCon = _SoCon ? _SoCon : this->randomCon();
     this->soSua = this->randomSua(_MaxSoSua);
+    this->loai = _loai;
 }
 
 void GiaSuc::Xuat() const

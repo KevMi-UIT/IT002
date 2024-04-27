@@ -17,7 +17,8 @@ int main()
 
     cout << "Quy uoc: Bo - 1; Cuu - 2; De - 3" << endl;
 
-    vector<GiaSuc *> ds(n);
+    vector<GiaSuc *> ds;
+    ds.resize(n);
     for (int i = 0; i < n; i++)
     {
         int sel;
@@ -26,13 +27,13 @@ int main()
         switch (sel)
         {
         case 1:
-            ds.push_back(new Bo());
+            ds[i] = (new Bo());
             break;
         case 2:
-            ds.push_back(new Cuu());
+            ds[i] = (new Cuu());
             break;
         case 3:
-            ds.push_back(new De());
+            ds[i] = (new De());
             break;
         default:
             cout << "Gia suc khong hop le!" << endl;
@@ -50,6 +51,7 @@ int main()
     for (int i = 0; i < soGiaSucGoc; i++)
     {
         string currentType = ds[i]->getLoai();
+        cout << currentType << endl;
         if (currentType == "Bo")
             for (int j = 0; j < ds[i]->getSoCon(); j++)
                 ds.push_back(new Bo());
@@ -72,7 +74,7 @@ int main()
     cout << "Tong so gia suc sau mot lua sinh:" << endl;
     for (auto &it : dsSauCung)
         cout << it.first << ": " << it.second << endl;
-    cout << "Tong so sua: " << tongSoSua;
+    cout << "Tong so sua: " << tongSoSua << "l" << endl;
 
     return 0;
 }
