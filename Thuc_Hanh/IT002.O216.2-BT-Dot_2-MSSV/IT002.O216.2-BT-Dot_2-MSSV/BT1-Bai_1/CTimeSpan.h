@@ -12,6 +12,7 @@ class CTimeSpan
     CTimeSpan(const long &_Length = 0) : length(_Length)
     {
     }
+    friend class CTime;
     friend istream &operator>>(istream &, CTimeSpan &);
     friend ostream &operator<<(ostream &, const CTimeSpan &);
     long getLength() const;

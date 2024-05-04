@@ -1,21 +1,21 @@
 #include <iostream>
-#include <cstring>
+#include <string>
 using namespace std;
 
 class HocSinh
 {
-private:
+  private:
     string hoTen;
     float diemToan;
     float diemVan;
     float diemTrungBinh;
     string xepLoai;
 
-public:
+  public:
     void Nhap();
     void Xuat() const;
 
-private:
+  private:
     void TinhDiemTrungBinh();
     void XetXepLoai();
 };

@@ -5,117 +5,99 @@ int CTime::TinhSoGiay() const
 {
     return (this->gio * 3600 + this->phut * 60 + this->giay);
 }
-void CTime::Nhap()
+istream &operator>>(istream &is, CTime &ctime)
 {
     cout << "Nhap gio: ";
-    cin >> this->gio;
+    is >> ctime.gio;
     cout << "Nhap phut: ";
-    cin >> this->phut;
+    is >> ctime.phut;
     cout << "Nhap giay: ";
-    cin >> this->giay;
+    is >> ctime.giay;
+    return is;
 }
-void CTime::Xuat() const
+ostream &operator<<(ostream &os, CTime &ctime)
 {
-    int giay = this->giay;
-    int phut = this->phut;
-    int gio = this->gio;
 
-    if (giay >= 60)
+    if (ctime.giay >= 60)
     {
-        giay -= 60;
-        phut++;
+        ctime.giay -= 60;
+        ctime.phut++;
     }
-    if (phut >= 60)
+    if (ctime.phut >= 60)
     {
-        phut -= 60;
-        gio++;
+        ctime.phut -= 60;
+        ctime.gio++;
     }
-    cout << gio << " gio " << phut << " phut " << giay << " giay";
+    os << ctime.gio << " gio " << ctime.phut << " phut " << ctime.giay << " giay";
+    return os;
 }
-
-CTime CTime::Cong(int sogiay) const
+CTime CTime::operator+(int &sogiay)
 {
-    CTime Time;
-    Time.gio = this->gio;
-    Time.phut = this->phut;
-    Time.giay = this->giay;
-    Time.giay = Time.giay + sogiay;
-    return Time;
+    CTime result;
+    result.gio = this->gio;
+    result.phut = this->phut;
+    result.giay = this->giay;
+    result.giay = this->giay + sogiay;
+    return result;
 }
-CTime CTime::Tru(int soGiay) const
+CTime CTime::operator-(int &soGiay)
 {
-    CTime Time;
-    Time.gio = this->gio;
-    Time.phut = this->phut;
-    Time.giay = this->giay;
-    Time.giay = Time.giay - soGiay;
-    while (Time.giay <= 0)
+    CTime result;
+    result.gio = this->gio;
+    result.phut = this->phut;
+    result.giay = this->giay;
+    result.giay = result.giay - soGiay;
+    while (result.giay <= 0)
     {
-        Time.giay = 60 + Time.giay;
-        Time.phut--;
+        result.giay = 60 + result.giay;
+        result.phut--;
     }
-    while (Time.phut <= 0)
+    while (result.phut <= 0)
     {
-        Time.phut = 60 + Time.phut;
-        Time.gio--;
+        result.phut = 60 + result.phut;
+        result.gio--;
     }
-    if (Time.gio <= 0)
-        Time.gio = 0;
-    return Time;
-}
-CTime CTime::TruCTS(const CTime &other) const
-{
-    CTime Time;
-    int tongGiay = this->gio * 3600 + this->phut * 60 + this->giay - (other.gio * 3600 + other.phut * 60 + other.giay);
-    Time.gio = tongGiay / 3600;
-    Time.phut = (tongGiay % 3600) / 60;
-    Time.giay = (tongGiay % 3600) % 60;
-    return Time;
-}
-CTime CTime::ThemMotGiay() const
-{
-    CTime Time;
-    Time.gio = this->gio;
-    Time.phut = this->phut;
-    Time.giay = this->giay;
-    Time.giay++;
-    if (Time.giay >= 60)
-    {
-        Time.giay = 0;
-        Time.phut++;
-        if (Time.phut >= 60)
-        {
-            Time.phut = 0;
-            Time.gio++;
-            if (Time.gio >= 24)
-            {
-                Time.gio = 0;
-            }
-        }
-    }
-    return Time;
+    if (result.gio <= 0)
+        result.gio = 0;
+    return result;
 }
 
-CTime CTime::BotMotGiay() const
+// CTime
+/* CTime CTime::TruCTS(const CTime &other) const
 {
     CTime Time;
-    Time.gio = this->gio;
-    Time.phut = this->phut;
-    Time.giay = this->giay;
-    Time.giay--;
-    if (Time.giay < 0)
-    {
-        Time.giay = 59;
-        Time.phut--;
-        if (Time.phut < 0)
-        {
-            Time.phut = 59;
-            Time.gio--;
-            if (Time.gio < 0)
-            {
-                Time.gio = 23;
-            }
-        }
-    }
+    int tongGiay = this->gio * 3600 + this->phut * 60 + this->giay - (other.gio * 3600 + other.phut * 60 +
+other.giay); Time.gio = tongGiay / 3600; Time.phut = (tongGiay % 3600) / 60; Time.giay = (tongGiay % 3600) % 60;
     return Time;
+}*/
+CTime CTime::operator++()
+{
+    CTime result;
+    result.gio = this->gio;
+    result.phut = this->phut;
+    result.giay = this->giay;
+    result.giay++;
+    return result;
+}
+
+CTime CTime::operator--()
+{
+    CTime result;
+    result.gio = this->gio;
+    result.phut = this->phut;
+    result.giay = this->giay;
+    result.giay--;
+    if (result.giay == 0)
+    {
+        result.giay = 59;
+        result.phut--;
+    }
+    if (result.phut == 0)
+    {
+        result.phut = 59;
+        result.gio--;
+    }
+    if (result.gio <= 0)
+        result.gio = 0;
+    return result;
 }

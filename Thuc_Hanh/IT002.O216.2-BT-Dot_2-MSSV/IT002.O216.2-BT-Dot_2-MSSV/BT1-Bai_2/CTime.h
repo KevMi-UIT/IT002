@@ -15,11 +15,12 @@ class CTime
     CTime(int gio = 0, int phut = 0, int giay = 0) : gio(gio), phut(phut), giay(giay)
     {
     }
-    void Nhap();
-    void Xuat() const;
-    CTime ThemMotGiay() const;
-    CTime BotMotGiay() const;
-    CTime Cong(int) const;
-    CTime Tru(int) const;
+    friend istream &operator>>(istream &, CTime &);
+    friend ostream &operator<<(ostream &, CTime &);
+    CTime operator-(int &);
+    CTime operator+(int &);
+    CTime operator++();
+    CTime operator--();
+    int quyDoi();
     CTime TruCTS(const CTime &) const;
 };
