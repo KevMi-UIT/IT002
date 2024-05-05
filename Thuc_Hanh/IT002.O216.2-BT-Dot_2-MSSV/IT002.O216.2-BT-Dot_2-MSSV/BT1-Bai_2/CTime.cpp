@@ -63,7 +63,7 @@ CTime CTime::operator-(int &soGiay)
         result.gio = 0;
     return result;
 }
-CTimeSpan CTime::TruCTS(const CTime &other) const
+CTimeSpan CTime::operator-(const CTime &other) const
 {
     CTime Time;
     int tongGiay1 = this->gio * 3600 + this->phut * 60 + this->giay;

@@ -22,5 +22,5 @@ class CTime
     CTime operator+(int &);
     CTime operator++();
     CTime operator--();
-    CTimeSpan TruCTS(const CTime &) const;
+    CTimeSpan operator-(const CTime &) const;
 };
