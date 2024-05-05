@@ -65,7 +65,6 @@ CTime CTime::operator-(int &soGiay)
 }
 CTimeSpan CTime::operator-(const CTime &other) const
 {
-    CTime Time;
     int tongGiay1 = this->gio * 3600 + this->phut * 60 + this->giay;
     int tongGiay2 = other.gio * 3600 + other.phut * 60 + other.giay;
     CTimeSpan a(tongGiay1), b(tongGiay2);
