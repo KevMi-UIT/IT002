@@ -18,18 +18,18 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\BT1-Bai_1\CTimeSpan.cpp">
+    <ClCompile Include="CTime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CTime.cpp">
+    <ClCompile Include="CTimeSpan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\BT1-Bai_1\CTimeSpan.h">
+    <ClInclude Include="CTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CTime.h">
+    <ClInclude Include="CTimeSpan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

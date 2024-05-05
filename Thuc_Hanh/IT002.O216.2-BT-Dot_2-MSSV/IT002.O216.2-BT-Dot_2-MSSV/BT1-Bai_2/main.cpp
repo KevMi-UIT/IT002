@@ -1,16 +1,20 @@
 #include "CTime.h"
+#include "CTimeSpan.h"
 #include <iostream>
 #include <vector>
 using namespace std;
 int main()
 {
-    CTime Time;
+    CTime Time, Time1;
     CTime PhepCong, PhepTru, CongMotGiay, TruMotGiay;
+    CTimeSpan Result, ctimespan1, ctimespan2;
     int sogiay;
     cout << "Nhap so giay: ";
     cin >> sogiay;
     cout << "Nhap Time" << endl;
     cin >> Time;
+    cout << "Nhap Time 1" << endl;
+    cin >> Time1;
     cout << "Thoi gian da nhap " << endl;
     cout << Time << endl;
     cout << "Sau khi cong so giay " << endl;

@@ -12,6 +12,7 @@ class CTime
     int TinhSoGiay() const;
 
   public:
+    friend class CTimeSpan;
     CTime(int gio = 0, int phut = 0, int giay = 0) : gio(gio), phut(phut), giay(giay)
     {
     }
@@ -21,6 +22,5 @@ class CTime
     CTime operator+(int &);
     CTime operator++();
     CTime operator--();
-    int quyDoi();
-    CTime TruCTS(const CTime &) const;
+    CTimeSpan TruCTS(const CTime &) const;
 };

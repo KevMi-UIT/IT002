@@ -1,4 +1,6 @@
 #include "CTime.h"
+#include "CTimeSpan.h"
+#include <cmath>
 #include <iostream>
 using namespace std;
 int CTime::TinhSoGiay() const
@@ -61,7 +63,6 @@ CTime CTime::operator-(int &soGiay)
         result.gio = 0;
     return result;
 }
-
 // CTime
 /* CTime CTime::TruCTS(const CTime &other) const
 {
