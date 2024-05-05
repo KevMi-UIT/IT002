@@ -7,7 +7,7 @@ int main()
 {
     CTime Time, Time1;
     CTime PhepCong, PhepTru, CongMotGiay, TruMotGiay;
-    CTimeSpan Result, ctimespan1, ctimespan2;
+    CTimeSpan Result;
     int sogiay;
     cout << "Nhap so giay: ";
     cin >> sogiay;
@@ -29,5 +29,8 @@ int main()
     cout << "Sau khi tru mot giay " << endl;
     TruMotGiay = --Time;
     cout << TruMotGiay << endl;
+    Result = Time.TruCTS(Time1);
+    cout << "CTimeSpan Time - Time1: ";
+    cout << Result << endl;
     return 0;
 }
