@@ -3,60 +3,46 @@
 
 using namespace std;
 
-istream &operator>>(istream &is, CTimeSpan &time)
+istream& operator>>(istream& is, CTimeSpan& time)
 {
-    cout << "Nhap so giay: ";
-    is >> time.length;
-    return is;
+	cout << "Nhap so giay: ";
+	is >> time.length;
+	return is;
 }
 
-ostream &operator<<(ostream &os, const CTimeSpan &time)
+ostream& operator<<(ostream& os, const CTimeSpan& time)
 {
-    os << time.length;
-    return os;
+	os << time.length;
+	return os;
 }
 
-long CTimeSpan::getLength() const
+int CTimeSpan::getLength() const
 {
-    return this->length;
+	return this->length;
 }
 
-CTimeSpan CTimeSpan::operator+(const CTimeSpan &other) const
+void CTimeSpan::setLength(const int& _Length)
 {
-    return CTimeSpan(this->length + other.length);
+	this->length = _Length;
 }
 
-CTimeSpan CTimeSpan::operator-(const CTimeSpan &other) const
+CTimeSpan CTimeSpan::operator+(const CTimeSpan& other) const
 {
-    return CTimeSpan(this->length - other.length);
+	return CTimeSpan(this->length + other.length);
 }
 
-bool CTimeSpan::operator==(const CTimeSpan &other) const
+CTimeSpan CTimeSpan::operator-(const CTimeSpan& other) const
 {
-    return this->length == other.length;
+	return CTimeSpan(this->length - other.length);
 }
 
-bool CTimeSpan::operator!=(const CTimeSpan &other) const
+void CTimeSpan::operator+=(const CTimeSpan& other)
 {
-    return this->length != other.length;
+	this->length += other.length;
 }
 
-bool CTimeSpan::operator>(const CTimeSpan &other) const
+void CTimeSpan::operator-=(const CTimeSpan& other)
 {
-    return this->length > other.length;
+	this->length -= other.length;
 }
 
-bool CTimeSpan::operator>=(const CTimeSpan &other) const
-{
-    return this->length >= other.length;
-}
-
-bool CTimeSpan::operator<(const CTimeSpan &other) const
-{
-    return this->length < other.length;
-}
-
-bool CTimeSpan::operator<=(const CTimeSpan &other) const
-{
-    return this->length <= other.length;
-}

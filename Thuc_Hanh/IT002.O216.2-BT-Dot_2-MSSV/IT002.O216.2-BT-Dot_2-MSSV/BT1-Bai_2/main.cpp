@@ -1,36 +1,32 @@
 #include "CTime.h"
 #include "CTimeSpan.h"
 #include <iostream>
-#include <vector>
+
 using namespace std;
 int main()
 {
-    CTime Time, Time1;
-    CTime PhepCong, PhepTru, CongMotGiay, TruMotGiay;
-    CTimeSpan Result;
-    int sogiay;
-    cout << "Nhap so giay: ";
-    cin >> sogiay;
-    cout << "Nhap Time" << endl;
-    cin >> Time;
-    cout << "Nhap Time 1" << endl;
-    cin >> Time1;
-    cout << "Thoi gian da nhap " << endl;
-    cout << Time << endl;
-    cout << "Sau khi cong so giay " << endl;
-    PhepCong = Time + sogiay;
-    cout << PhepCong << endl;
-    cout << "Sau khi tru so giay " << endl;
-    PhepTru = Time - sogiay;
-    cout << PhepTru << endl;
-    cout << "Sau khi cong mot giay " << endl;
-    CongMotGiay = ++Time;
-    cout << CongMotGiay << endl;
-    cout << "Sau khi tru mot giay " << endl;
-    TruMotGiay = --Time;
-    cout << TruMotGiay << endl;
-    Result = Time - Time1;
-    cout << "CTimeSpan Time - Time1: ";
-    cout << Result << endl;
-    return 0;
+	CTime time1, time2;
+	int sogiay;
+
+	cout << "Nhap Time 1: " << endl;
+	cin >> time1;
+	cout << "Nhap Time 2" << endl;
+	cin >> time2;
+
+	cout << endl;
+
+	cout << "Nhap so giay de cong voi Time 1: ";
+	cin >> sogiay;
+	cout << "Time 1 sau khi cong voi " << sogiay << " giay: " << time1 + sogiay << endl;
+
+	cout << "Nhap so giay de tru voi Time 2: ";
+	cin >> sogiay;
+	cout << "Time 2 sau khi tru voi " << sogiay << " giay: " << time2 - sogiay << endl;
+
+	cout << "Time 1 - Time 2 duoc 1 CTimeSpan = " << time1 - time2 << endl;
+
+	cout << "Time 1 them 1 giay = " << ++time1 << endl;
+	cout << "Time 2 bot 1 giay = " << --time2 << endl;
+
+	return 0;
 }
