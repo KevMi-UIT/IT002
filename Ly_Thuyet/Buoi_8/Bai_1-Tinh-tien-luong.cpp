@@ -11,29 +11,16 @@ class NhanVien
     long luongCoBan;
 
   public:
-    NhanVien()
-    {
-        hoTen = "";
-        ngaySinh = 0;
-        thangSinh = 0;
-        namSinh = 0;
-        luongCoBan = 0;
-    }
-    NhanVien(string _HoTen, int _Ngay, int _Thang, int _Nam, long _Luong)
-        : hoTen(_HoTen), ngaySinh(_Ngay), thangSinh(_Thang), namSinh(_Nam), luongCoBan(_Luong)
+    NhanVien(const string &_hoTen = "", const int &_ngay = 0, const int &_thang = 0, const int &_nam = 0,
+             const long &_luong = 0)
+        : hoTen(_hoTen), ngaySinh(_ngay), thangSinh(_thang), namSinh(_nam), luongCoBan(_luong)
     {
     }
-    string getTen()
-    {
-        return this->hoTen;
-    }
-    virtual long getLuong() const
-    {
-        return this->luongCoBan;
-    }
+    string getTen() const;
+    virtual long getLuong() const;
 
-    virtual void output() const;
-    void input();
+    void nhap();
+    virtual void xuat() const;
 };
 
 class NhanVienVanPhong : public NhanVien
@@ -42,19 +29,14 @@ class NhanVienVanPhong : public NhanVien
     long troCap;
 
   public:
-    NhanVienVanPhong() : NhanVien("", 0, 0, 0, 0)
+    NhanVienVanPhong(const string &_hoTen = "", const int &_ngay = 0, const int &_thang = 0, const int &_nam = 0,
+                     const long &_luong = 0, const int &_soNgayLam = 0, const long &_troCap = 0)
+        : NhanVien(_hoTen, _ngay, _thang, _nam, _luong), soNgayLamViec(_soNgayLam), troCap(_troCap)
     {
     }
-    NhanVienVanPhong(string ht, int ng, int th, int nam, long Luong, int _soNgayLam, long _troCap)
-        : NhanVien(ht, ng, th, nam, Luong), soNgayLamViec(_soNgayLam), troCap(_troCap)
-    {
-    }
-    void output() const;
-    void input();
-    long getLuong() const
-    {
-        return this->luongCoBan + 200000 * soNgayLamViec + troCap;
-    };
+    void xuat() const;
+    void nhap();
+    long getLuong() const;
 };
 
 class NhanVienSanXuat : public NhanVien
@@ -62,19 +44,14 @@ class NhanVienSanXuat : public NhanVien
     int soSanPham;
 
   public:
-    NhanVienSanXuat() : NhanVien("", 0, 0, 0, 0)
+    NhanVienSanXuat(const string &_hoTen = "", const int &_ngay = 0, const int &_thang = 0, const int &_nam = 0,
+                    const long &_luong = 0, const int &_soSanPham = 0)
+        : NhanVien(_hoTen, _ngay, _thang, _nam, _luong), soSanPham(_soSanPham)
     {
     }
-    NhanVienSanXuat(string ht, int ng, int th, int nam, long Luong, int _soSanPham)
-        : NhanVien(ht, ng, th, nam, Luong), soSanPham(_soSanPham)
-    {
-    }
-    void output() const;
-    void input();
-    long getLuong() const
-    {
-        return luongCoBan + 2000 * soSanPham;
-    };
+    void xuat() const;
+    void nhap();
+    long getLuong() const;
 };
 
 class NhanVienQuanLy : public NhanVien
@@ -83,20 +60,14 @@ class NhanVienQuanLy : public NhanVien
     long tienThuong;
 
   public:
-    NhanVienQuanLy() : NhanVien("", 0, 0, 0, 0)
+    NhanVienQuanLy(const string &_hoTen = "", const int &_ngay = 0, const int &_thang = 0, const int &_nam = 0,
+                   const long &_luong = 0, const int &_heSo = 0, const long &_thuong = 0)
+        : NhanVien(_hoTen, _ngay, _thang, _nam, _luong), heSoChucVu(_heSo), tienThuong(_thuong)
     {
     }
-    NhanVienQuanLy(string ht, int ng, int th, int nam, long Luong, int heso, long thuong)
-        : NhanVien(ht, ng, th, nam, Luong), heSoChucVu(heso), tienThuong(thuong)
-    {
-        ;
-    }
-    void output() const;
-    void input();
-    long getLuong() const
-    {
-        return this->luongCoBan * heSoChucVu + tienThuong;
-    };
+    void xuat() const;
+    void nhap();
+    long getLuong() const;
 };
 
 class DanhSachNhanVien
@@ -106,11 +77,30 @@ class DanhSachNhanVien
     vector<NhanVien *> ds;
 
   public:
-    void input();
-    void output();
+    void nhap();
+    void xuat();
     long long tongLuong = 0;
 };
-void NhanVien::input()
+
+int main()
+{
+    DanhSachNhanVien list;
+    list.nhap();
+    list.xuat();
+    return 0;
+}
+
+string NhanVien::getTen() const
+{
+    return this->hoTen;
+}
+
+long NhanVien::getLuong() const
+{
+    return this->luongCoBan;
+}
+
+void NhanVien::nhap()
 {
     cin.ignore();
     cout << "Nhap ten: ";
@@ -125,56 +115,71 @@ void NhanVien::input()
     cin >> this->luongCoBan;
 }
 
-void NhanVien::output() const
+void NhanVien::xuat() const
 {
     cout << "Ho ten: " << this->hoTen << endl;
-    cout << "Ngay sinh: " << this->ngaySinh << "/" << this->thangSinh << "/" << this->namSinh << endl;
+    cout << "Ngay thang nam sinh: " << this->ngaySinh << "/" << this->thangSinh << "/" << this->namSinh << endl;
 }
 
-void NhanVienVanPhong::input()
+void NhanVienVanPhong::nhap()
 {
-    NhanVien::input();
+    NhanVien::nhap();
     cout << "Nhap so ngay lam viec: ";
     cin >> this->soNgayLamViec;
     cout << "Nhap tro cap: ";
     cin >> this->troCap;
 }
 
-void NhanVienVanPhong::output() const
+void NhanVienVanPhong::xuat() const
 {
-    NhanVien::output();
-    cout << "Luong cua nhan vien van phong: " << this->getLuong() << " dong" << endl;
+    NhanVien::xuat();
+    cout << "Luong cua nhan vien van phong: " << this->getLuong() << " (dong)" << endl;
 }
 
-void NhanVienSanXuat::input()
+long NhanVienVanPhong::getLuong() const
 {
-    NhanVien::input();
+    return this->luongCoBan + 200000 * this->soNgayLamViec + this->troCap;
+};
+
+void NhanVienSanXuat::nhap()
+{
+    NhanVien::nhap();
     cout << "Nhap so san pham: ";
     cin >> this->soSanPham;
 }
 
-void NhanVienSanXuat::output() const
+void NhanVienSanXuat::xuat() const
 {
-    NhanVien::output();
-    cout << "Luong cua nhan vien san xuat: " << this->getLuong() << " dong" << endl;
+    NhanVien::xuat();
+    cout << "Luong cua nhan vien san xuat: " << this->getLuong() << " (dong)" << endl;
 }
 
-void NhanVienQuanLy::input()
+long NhanVienSanXuat::getLuong() const
 {
-    NhanVien::input();
+    return this->luongCoBan + 2000 * this->soSanPham;
+};
+
+void NhanVienQuanLy::nhap()
+{
+    NhanVien::nhap();
     cout << "Nhap he so chuc vu: ";
     cin >> this->heSoChucVu;
     cout << "Nhap luong thuong: ";
     cin >> this->tienThuong;
 }
 
-void NhanVienQuanLy::output() const
+void NhanVienQuanLy::xuat() const
 {
-    NhanVien::output();
-    cout << "Luong cua nhan vien quan ly: " << this->getLuong() << " dong" << endl;
+    NhanVien::xuat();
+    cout << "Luong cua nhan vien quan ly: " << this->getLuong() << " (dong)" << endl;
 }
 
-void DanhSachNhanVien::input()
+long NhanVienQuanLy::getLuong() const
+{
+    return this->luongCoBan * this->heSoChucVu + this->tienThuong;
+};
+
+void DanhSachNhanVien::nhap()
 {
     int opt, size;
     cout << "Nhap so luong nhan vien: " << endl;
@@ -183,9 +188,9 @@ void DanhSachNhanVien::input()
     {
         cout << endl;
         cout << "------Nhap nguoi thu " << i + 1 << "------" << endl;
-        cout << "[1]:Nhan Vien Van Phong" << '\n'
-             << "[2]:Nhan Vien San Xuat" << '\n'
-             << "[3]:Nhan Vien Quan Ly" << '\n';
+        cout << "[1]: Nhan Vien Van Phong" << endl;
+        cout << "[2]: Nhan Vien San Xuat" << endl;
+        cout << "[3]: Nhan Vien Quan Ly" << endl;
         cout << "----------------------------" << endl;
         do
         {
@@ -195,19 +200,19 @@ void DanhSachNhanVien::input()
             {
             case 1: {
                 NhanVienVanPhong *nvvp = new NhanVienVanPhong;
-                nvvp->input();
+                nvvp->nhap();
                 ds.push_back(nvvp);
                 break;
             }
             case 2: {
                 NhanVienSanXuat *nvsx = new NhanVienSanXuat;
-                nvsx->input();
+                nvsx->nhap();
                 ds.push_back(nvsx);
                 break;
             }
             case 3: {
                 NhanVienQuanLy *nvql = new NhanVienQuanLy;
-                nvql->input();
+                nvql->nhap();
                 ds.push_back(nvql);
                 break;
             }
@@ -218,11 +223,12 @@ void DanhSachNhanVien::input()
     }
 }
 
-void DanhSachNhanVien::output()
+void DanhSachNhanVien::xuat()
 {
     int opt;
-    cout << "-------------------------------------------------" << endl;
-    cout << "[1]:Xuat danh sach nhan vien" << '\n' << "[2]:Tim kiem thong tin nhan vien" << '\n';
+    cout << "----------------------------" << endl;
+    cout << "[1]: Xuat danh sach nhan vien" << endl;
+    cout << "[2]: Tim kiem thong tin nhan vien" << endl;
     cout << "----------------------------" << endl;
     int i = 1;
     do
@@ -233,45 +239,36 @@ void DanhSachNhanVien::output()
         switch (opt)
         {
         case 1:
-            cout << "--------------------DANH SACH--------------------" << endl;
+            cout << "------- DANH SACH ----------" << endl;
             cout << "So luong nguoi trong danh sach: " << soLuong << endl;
             for (NhanVien *nv : ds)
             {
                 this->tongLuong += nv->getLuong();
                 cout << i << ".";
-                nv->output();
+                nv->xuat();
                 cout << endl;
-                cout << "-------------------------------------------------" << endl;
+                cout << "----------------------------" << endl;
                 i++;
             }
-            cout << "Tong luong cua cong ty: " << this->tongLuong << " dong" << endl;
+            cout << "Tong luong cua cong ty: " << this->tongLuong << " (dong)" << endl;
             break;
         case 2: {
             cout << "Nhap ten nhan vien: ";
             string ten;
-            // cin.ignore();
             getline(cin, ten);
             bool search = false;
             for (NhanVien *nv : ds)
             {
                 if (nv->getTen() == ten)
                 {
-                    nv->output();
+                    nv->xuat();
                     search = true;
                 }
             }
             if (!search)
-                cout << "Khong tim thay nhan vien." << endl;
+                cout << "Khong tim thay nhan vien" << endl;
             break;
         }
         }
     } while (opt != 1 && opt != 2);
-}
-
-int main()
-{
-    DanhSachNhanVien list;
-    list.input();
-    list.output();
-    return 0;
 }
