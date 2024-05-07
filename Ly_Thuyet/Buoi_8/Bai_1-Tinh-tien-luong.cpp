@@ -23,67 +23,80 @@ class NhanVien
         : hoTen(_HoTen), ngaySinh(_Ngay), thangSinh(_Thang), namSinh(_Nam), luongCoBan(_Luong)
     {
     }
+    string getTen()
+    {
+        return this->hoTen;
+    }
+    virtual long getLuong() const
+    {
+        return this->luongCoBan;
+    }
 
-    virtual void print(ostream &out) const;
-    friend istream &operator>>(istream &, NhanVien &);
-    friend ostream &operator<<(ostream &, const NhanVien &);
+    virtual void output() const;
+    void input();
 };
 
 class NhanVienVanPhong : public NhanVien
 {
     int soNgayLamViec;
     long troCap;
-    long Luong = luongCoBan + 200000 * soNgayLamViec + troCap;
 
   public:
     NhanVienVanPhong() : NhanVien("", 0, 0, 0, 0)
     {
     }
     NhanVienVanPhong(string ht, int ng, int th, int nam, long Luong, int _soNgayLam, long _troCap)
-        : NhanVien(ht, ng, th, nam, Luong)
+        : NhanVien(ht, ng, th, nam, Luong), soNgayLamViec(_soNgayLam), troCap(_troCap)
     {
-        soNgayLamViec = _soNgayLam;
-        troCap = _troCap;
     }
-    friend istream &operator>>(istream &, NhanVienVanPhong &);
-    friend ostream &operator<<(ostream &, const NhanVienVanPhong &);
+    void output() const;
+    void input();
+    long getLuong() const
+    {
+        return this->luongCoBan + 200000 * soNgayLamViec + troCap;
+    };
 };
 
 class NhanVienSanXuat : public NhanVien
 {
     int soSanPham;
-    long Luong = luongCoBan + 2000 * soSanPham;
 
   public:
     NhanVienSanXuat() : NhanVien("", 0, 0, 0, 0)
     {
     }
-    NhanVienSanXuat(string ht, int ng, int th, int nam, long Luong, int _soSanPham) : NhanVien(ht, ng, th, nam, Luong)
+    NhanVienSanXuat(string ht, int ng, int th, int nam, long Luong, int _soSanPham)
+        : NhanVien(ht, ng, th, nam, Luong), soSanPham(_soSanPham)
     {
-        soSanPham = _soSanPham;
     }
-    friend istream &operator>>(istream &, NhanVienSanXuat &);
-    friend ostream &operator<<(ostream &, const NhanVienSanXuat &);
+    void output() const;
+    void input();
+    long getLuong() const
+    {
+        return luongCoBan + 2000 * soSanPham;
+    };
 };
 
 class NhanVienQuanLy : public NhanVien
 {
     int heSoChucVu;
     long tienThuong;
-    long Luong = luongCoBan * heSoChucVu + tienThuong;
 
   public:
     NhanVienQuanLy() : NhanVien("", 0, 0, 0, 0)
     {
     }
     NhanVienQuanLy(string ht, int ng, int th, int nam, long Luong, int heso, long thuong)
-        : NhanVien(ht, ng, th, nam, Luong)
+        : NhanVien(ht, ng, th, nam, Luong), heSoChucVu(heso), tienThuong(thuong)
     {
-        heSoChucVu = heso;
-        tienThuong = thuong;
+        ;
     }
-    friend istream &operator>>(istream &, NhanVienQuanLy &);
-    friend ostream &operator<<(ostream &, const NhanVienQuanLy &);
+    void output() const;
+    void input();
+    long getLuong() const
+    {
+        return this->luongCoBan * heSoChucVu + tienThuong;
+    };
 };
 
 class DanhSachNhanVien
@@ -93,82 +106,75 @@ class DanhSachNhanVien
     vector<NhanVien *> ds;
 
   public:
-    void input(istream &);
-    void output(ostream &);
-    friend istream &operator>>(istream &, DanhSachNhanVien &);
-    friend ostream &operator<<(ostream &, const DanhSachNhanVien &);
-    long long tongLuong;
+    void input();
+    void output();
+    long long tongLuong = 0;
 };
-istream &operator>>(istream &in, NhanVien &nv)
+void NhanVien::input()
 {
+    cin.ignore();
     cout << "Nhap ten: ";
-    getline(in, nv.hoTen);
-    in.ignore();
-    return in;
+    getline(cin, this->hoTen);
+    cout << "Nhap ngay sinh: ";
+    cin >> this->ngaySinh;
+    cout << "Nhap thang sinh: ";
+    cin >> this->thangSinh;
+    cout << "Nhap nnam sinh: ";
+    cin >> this->namSinh;
+    cout << "Nhap luong co ban: ";
+    cin >> this->luongCoBan;
 }
 
-void NhanVien::print(ostream &out) const
+void NhanVien::output() const
 {
-    out << "Ho ten: " << this->hoTen << endl;
-    out << "Ngay sinh: " << this->ngaySinh << "/" << this->thangSinh << "/" << this->namSinh << endl;
+    cout << "Ho ten: " << this->hoTen << endl;
+    cout << "Ngay sinh: " << this->ngaySinh << "/" << this->thangSinh << "/" << this->namSinh << endl;
 }
 
-ostream &operator<<(ostream &out, const NhanVien &nv)
+void NhanVienVanPhong::input()
 {
-    nv.print(out);
-    return out;
-}
-
-istream &operator>>(istream &in, NhanVienVanPhong &nvvp)
-{
-    in >> (NhanVien &)nvvp;
+    NhanVien::input();
     cout << "Nhap so ngay lam viec: ";
-    in >> nvvp.soNgayLamViec;
+    cin >> this->soNgayLamViec;
     cout << "Nhap tro cap: ";
-    in >> nvvp.troCap;
-    return in;
+    cin >> this->troCap;
 }
 
-ostream &operator<<(ostream &out, const NhanVienVanPhong &nvvp)
+void NhanVienVanPhong::output() const
 {
-    out << (NhanVien &)nvvp;
-    out << "Luong cua nhan vien: " << nvvp.Luong << " dong" << endl;
-    return out;
+    NhanVien::output();
+    cout << "Luong cua nhan vien van phong: " << this->getLuong() << " dong" << endl;
 }
 
-istream &operator>>(istream &in, NhanVienSanXuat &nvsx)
+void NhanVienSanXuat::input()
 {
-    in >> (NhanVien &)nvsx;
+    NhanVien::input();
     cout << "Nhap so san pham: ";
-    in >> nvsx.soSanPham;
-    return in;
+    cin >> this->soSanPham;
 }
 
-ostream &operator<<(ostream &out, const NhanVienSanXuat &nvsx)
+void NhanVienSanXuat::output() const
 {
-    out << (NhanVien &)nvsx;
-    out << "Luong cua nhan vien: " << nvsx.Luong << " dong" << endl;
-    return out;
+    NhanVien::output();
+    cout << "Luong cua nhan vien san xuat: " << this->getLuong() << " dong" << endl;
 }
 
-istream &operator>>(istream &in, NhanVienQuanLy &nvql)
+void NhanVienQuanLy::input()
 {
-    in >> (NhanVien &)nvql;
+    NhanVien::input();
     cout << "Nhap he so chuc vu: ";
-    in >> nvql.heSoChucVu;
+    cin >> this->heSoChucVu;
     cout << "Nhap luong thuong: ";
-    in >> nvql.tienThuong;
-    return in;
+    cin >> this->tienThuong;
 }
 
-ostream &operator<<(ostream &out, const NhanVienQuanLy &nvql)
+void NhanVienQuanLy::output() const
 {
-    out << (NhanVien &)nvql;
-    out << "Luong cua quan ly: " << nvql.Luong << " dong" << endl;
-    return out;
+    NhanVien::output();
+    cout << "Luong cua nhan vien quan ly: " << this->getLuong() << " dong" << endl;
 }
 
-void DanhSachNhanVien::input(istream &in)
+void DanhSachNhanVien::input()
 {
     int opt, size;
     cout << "Nhap so luong nhan vien: " << endl;
@@ -187,21 +193,24 @@ void DanhSachNhanVien::input(istream &in)
             cin >> opt;
             switch (opt)
             {
-            case 1:
+            case 1: {
                 NhanVienVanPhong *nvvp = new NhanVienVanPhong;
-                cin >> (*nvvp);
+                nvvp->input();
                 ds.push_back(nvvp);
                 break;
-            case 2:
+            }
+            case 2: {
                 NhanVienSanXuat *nvsx = new NhanVienSanXuat;
-                cin >> (*nvsx);
+                nvsx->input();
                 ds.push_back(nvsx);
                 break;
-            case 3:
+            }
+            case 3: {
                 NhanVienQuanLy *nvql = new NhanVienQuanLy;
-                cin >> (*nvql);
+                nvql->input();
                 ds.push_back(nvql);
                 break;
+            }
             default:
                 break;
             }
@@ -209,12 +218,60 @@ void DanhSachNhanVien::input(istream &in)
     }
 }
 
-istream &operator>>(istream &in, DanhSachNhanVien &list)
+void DanhSachNhanVien::output()
 {
-    list.input(in);
-    return in;
+    int opt;
+    cout << "-------------------------------------------------" << endl;
+    cout << "[1]:Xuat danh sach nhan vien" << '\n' << "[2]:Tim kiem thong tin nhan vien" << '\n';
+    cout << "----------------------------" << endl;
+    int i = 1;
+    do
+    {
+        cout << "Nhap lua chon: " << endl;
+        cin >> opt;
+        cin.ignore();
+        switch (opt)
+        {
+        case 1:
+            cout << "--------------------DANH SACH--------------------" << endl;
+            cout << "So luong nguoi trong danh sach: " << soLuong << endl;
+            for (NhanVien *nv : ds)
+            {
+                this->tongLuong += nv->getLuong();
+                cout << i << ".";
+                nv->output();
+                cout << endl;
+                cout << "-------------------------------------------------" << endl;
+                i++;
+            }
+            cout << "Tong luong cua cong ty: " << this->tongLuong << " dong" << endl;
+            break;
+        case 2: {
+            cout << "Nhap ten nhan vien: ";
+            string ten;
+            // cin.ignore();
+            getline(cin, ten);
+            bool search = false;
+            for (NhanVien *nv : ds)
+            {
+                if (nv->getTen() == ten)
+                {
+                    nv->output();
+                    search = true;
+                }
+            }
+            if (!search)
+                cout << "Khong tim thay nhan vien." << endl;
+            break;
+        }
+        }
+    } while (opt != 1 && opt != 2);
 }
 
-void DanhSachNhanVien::output(ostream &out)
+int main()
 {
+    DanhSachNhanVien list;
+    list.input();
+    list.output();
+    return 0;
 }
