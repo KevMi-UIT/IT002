@@ -4,6 +4,7 @@
 #include "HinhThang.h"
 #include "HinhVuong.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -15,36 +16,61 @@ int main()
     cout << "\tHinh binh hanh: 2" << endl;
     cout << "\tHinh chu nhat: 3" << endl;
     cout << "\tHinh vuong: 4" << endl;
+    cout << endl;
 
     int n;
-    cout << "Nhap loai hinh hoc: ";
+    cout << "Nhap so hinh hoc: ";
     cin >> n;
+    cout << endl;
 
-    HinhHoc *shape = NULL;
-
-    switch (n)
+    vector<HinhHoc *> ds;
+    ds.resize(n);
+    int select{0};
+    for (int i = 0; i < n; i++)
     {
-    case 1:
-        shape = new HinhThang();
-        break;
-    case 2:
-        shape = new HinhBinhHanh();
-        break;
-    case 3:
-        shape = new HinhChuNhat();
-        break;
-    case 4:
-        shape = new HinhVuong();
-        break;
-    default:
-        cout << "Loai hinh hoc khong hop le!" << endl;
+        cout << "Nhap loai hinh hoc: ";
+        cin >> select;
+        switch (select)
+        {
+        case 1: {
+            ds[i] = new HinhThang();
+            ds[i]->Nhap();
+            break;
+        }
+        case 2: {
+
+            ds[i] = new HinhBinhHanh();
+            ds[i]->Nhap();
+            break;
+        }
+        case 3: {
+
+            ds[i] = new HinhChuNhat();
+            ds[i]->Nhap();
+            break;
+        }
+        case 4: {
+            ds[i] = new HinhVuong();
+            ds[i]->Nhap();
+            break;
+        }
+        default: {
+            cout << "Loai hinh hoc khong hop le!" << endl;
+            cout << "Vui long nhap lai!" << endl;
+            --i;
+        }
+        }
+        cout << endl;
     }
 
-    if (shape)
+    cout << "------------------" << endl;
+    cout << endl;
+
+    for (int i = 0; i < n; i++)
     {
-        shape->Nhap();
-        shape->Xuat();
-        delete shape;
+        cout << "Hinh thu " << i + 1 << ":" << endl;
+        ds[i]->Xuat();
+        cout << endl;
     }
 
     return 0;
