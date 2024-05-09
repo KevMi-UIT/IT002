@@ -3,23 +3,19 @@
 using namespace std;
 class CTimeSpan
 {
-  private:
-    long length;
+private:
+	int length;
 
-  public:
-    CTimeSpan(const long &_Length = 0) : length(_Length)
-    {
-    }
-    friend class CTime;
-    friend istream &operator>>(istream &, CTimeSpan &);
-    friend ostream &operator<<(ostream &, const CTimeSpan &);
-    long getLength() const;
-    CTimeSpan operator+(const CTimeSpan &) const;
-    CTimeSpan operator-(const CTimeSpan &) const;
-    bool operator==(const CTimeSpan &) const;
-    bool operator!=(const CTimeSpan &) const;
-    bool operator>(const CTimeSpan &) const;
-    bool operator>=(const CTimeSpan &) const;
-    bool operator<(const CTimeSpan &) const;
-    bool operator<=(const CTimeSpan &) const;
+public:
+	CTimeSpan(const int& _Length = 0) : length(_Length)
+	{}
+	friend class CTime;
+	friend istream& operator>>(istream&, CTimeSpan&);
+	friend ostream& operator<<(ostream&, const CTimeSpan&);
+	int getLength() const;
+	void setLength(const int&);
+	CTimeSpan operator+(const CTimeSpan&) const;
+	CTimeSpan operator-(const CTimeSpan&) const;
+	void operator+=(const CTimeSpan& other);
+	void operator-=(const CTimeSpan& other);
 };
