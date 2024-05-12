@@ -94,7 +94,7 @@ IntSet IntSet::operator-(const IntSet &other) const
 
 int IntSet::operator[](const int &pos) const
 {
-    if ((0 <= pos and pos < this->count))
+    if ((0 <= pos && pos < this->count))
         return this->values[pos];
     return -1; // return -1 if the position is not valid
 }
