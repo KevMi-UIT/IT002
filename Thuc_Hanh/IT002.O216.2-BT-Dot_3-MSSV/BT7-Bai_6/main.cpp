@@ -51,7 +51,6 @@ int main()
     for (int i = 0; i < soGiaSucGoc; i++)
     {
         string currentType = ds[i]->getLoai();
-        cout << currentType << endl;
         if (currentType == "Bo")
             for (int j = 0; j < ds[i]->getSoCon(); j++)
                 ds.push_back(new Bo());
